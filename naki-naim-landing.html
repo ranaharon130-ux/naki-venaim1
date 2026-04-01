@@ -1,0 +1,890 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>נקי ונעים – ניקיון מקצועי לבית ולמשרד</title>
+<link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;700;900&family=Assistant:wght@300;400;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --blue: #1a6fc4;
+    --blue-light: #2d8de0;
+    --blue-pale: #e8f4fd;
+    --blue-dark: #0d4a87;
+    --accent: #00c9a7;
+    --accent-light: #e0faf5;
+    --white: #ffffff;
+    --off-white: #f7fafd;
+    --gray-light: #eef2f7;
+    --gray: #8899aa;
+    --dark: #1a2535;
+    --text: #2c3e50;
+    --shadow: 0 8px 40px rgba(26,111,196,0.10);
+    --shadow-lg: 0 20px 60px rgba(26,111,196,0.15);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Assistant', 'Heebo', sans-serif;
+    background: var(--white);
+    color: var(--text);
+    direction: rtl;
+    overflow-x: hidden;
+  }
+
+  /* ─── STICKY NAV ─── */
+  .nav {
+    position: fixed; top: 0; width: 100%; z-index: 100;
+    background: rgba(255,255,255,0.95);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(26,111,196,0.08);
+    padding: 14px 40px;
+    display: flex; align-items: center; justify-content: space-between;
+    box-shadow: 0 2px 20px rgba(26,111,196,0.06);
+  }
+  .nav-logo {
+    display: flex; align-items: center; gap: 10px;
+    font-family: 'Heebo', sans-serif; font-weight: 900;
+    font-size: 1.25rem; color: var(--blue);
+  }
+  .nav-logo svg { width: 34px; height: 34px; }
+  .nav-cta {
+    background: var(--blue); color: white;
+    padding: 10px 24px; border-radius: 30px;
+    font-size: .9rem; font-weight: 700; text-decoration: none;
+    transition: all .2s; white-space: nowrap;
+  }
+  .nav-cta:hover { background: var(--blue-dark); transform: translateY(-1px); box-shadow: 0 4px 16px rgba(26,111,196,0.3); }
+
+  /* ─── HERO ─── */
+  .hero {
+    min-height: 100vh;
+    background: linear-gradient(145deg, #e8f4fd 0%, #f0f9ff 40%, #ffffff 70%);
+    display: flex; align-items: center;
+    padding: 120px 40px 80px;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute; top: -80px; left: -80px;
+    width: 500px; height: 500px;
+    background: radial-gradient(circle, rgba(26,111,196,0.07) 0%, transparent 70%);
+    border-radius: 50%;
+  }
+  .hero::after {
+    content: '';
+    position: absolute; bottom: -60px; right: -60px;
+    width: 400px; height: 400px;
+    background: radial-gradient(circle, rgba(0,201,167,0.07) 0%, transparent 70%);
+    border-radius: 50%;
+  }
+  .hero-inner {
+    max-width: 1100px; margin: 0 auto;
+    display: grid; grid-template-columns: 1fr 1fr; gap: 60px;
+    align-items: center; position: relative; z-index: 1;
+  }
+  .hero-badge {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: var(--accent-light); color: #00a389;
+    padding: 6px 16px; border-radius: 30px;
+    font-size: .82rem; font-weight: 700; margin-bottom: 20px;
+    border: 1px solid rgba(0,201,167,0.2);
+  }
+  .hero-badge::before { content: '✦'; font-size: .75rem; }
+  .hero h1 {
+    font-family: 'Heebo', sans-serif; font-weight: 900;
+    font-size: clamp(2.2rem, 4vw, 3.4rem);
+    line-height: 1.15; color: var(--dark);
+    margin-bottom: 20px;
+  }
+  .hero h1 span { color: var(--blue); display: block; }
+  .hero-sub {
+    font-size: 1.15rem; color: var(--gray);
+    line-height: 1.75; margin-bottom: 36px;
+  }
+  .hero-ctas { display: flex; gap: 14px; flex-wrap: wrap; margin-bottom: 40px; }
+  .btn-primary {
+    background: var(--blue); color: white;
+    padding: 16px 32px; border-radius: 50px;
+    font-size: 1rem; font-weight: 700; text-decoration: none;
+    display: inline-flex; align-items: center; gap: 8px;
+    transition: all .25s; box-shadow: 0 6px 24px rgba(26,111,196,0.3);
+  }
+  .btn-primary:hover { background: var(--blue-dark); transform: translateY(-2px); box-shadow: 0 10px 32px rgba(26,111,196,0.4); }
+  .btn-whatsapp {
+    background: #25d366; color: white;
+    padding: 16px 28px; border-radius: 50px;
+    font-size: 1rem; font-weight: 700; text-decoration: none;
+    display: inline-flex; align-items: center; gap: 8px;
+    transition: all .25s; box-shadow: 0 6px 24px rgba(37,211,102,0.3);
+  }
+  .btn-whatsapp:hover { background: #1fb855; transform: translateY(-2px); }
+  .btn-outline {
+    border: 2px solid var(--blue); color: var(--blue);
+    padding: 14px 28px; border-radius: 50px;
+    font-size: 1rem; font-weight: 700; text-decoration: none;
+    display: inline-flex; align-items: center; gap: 8px;
+    transition: all .25s; background: transparent;
+  }
+  .btn-outline:hover { background: var(--blue); color: white; }
+
+  .hero-stats {
+    display: flex; gap: 28px;
+  }
+  .hero-stat { text-align: center; }
+  .hero-stat-num {
+    font-family: 'Heebo', sans-serif; font-weight: 900;
+    font-size: 1.8rem; color: var(--blue); line-height: 1;
+  }
+  .hero-stat-label { font-size: .78rem; color: var(--gray); margin-top: 4px; }
+
+  .hero-visual {
+    position: relative; display: flex; justify-content: center;
+  }
+  .hero-card-main {
+    background: white; border-radius: 24px;
+    padding: 36px; box-shadow: var(--shadow-lg);
+    max-width: 340px; width: 100%; position: relative;
+  }
+  .hero-icon-big {
+    width: 80px; height: 80px;
+    background: var(--blue-pale);
+    border-radius: 20px;
+    display: flex; align-items: center; justify-content: center;
+    margin-bottom: 20px;
+  }
+  .hero-icon-big svg { width: 44px; height: 44px; color: var(--blue); }
+  .hero-card-main h3 {
+    font-size: 1.2rem; font-weight: 800; color: var(--dark); margin-bottom: 12px;
+  }
+  .check-list { list-style: none; }
+  .check-list li {
+    display: flex; align-items: center; gap: 10px;
+    font-size: .95rem; color: var(--text); padding: 7px 0;
+    border-bottom: 1px solid var(--gray-light);
+  }
+  .check-list li:last-child { border-bottom: none; }
+  .check-list li::before {
+    content: '✓'; width: 22px; height: 22px;
+    background: var(--accent); color: white;
+    border-radius: 50%; display: flex; align-items: center; justify-content: center;
+    font-size: .7rem; font-weight: 900; flex-shrink: 0;
+  }
+  .float-badge {
+    position: absolute;
+    background: white; border-radius: 16px; padding: 12px 18px;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.12);
+    display: flex; align-items: center; gap: 10px; font-size: .85rem;
+  }
+  .float-badge-1 { top: -20px; left: -40px; }
+  .float-badge-2 { bottom: -16px; left: -30px; }
+  .float-badge .stars { color: #f59e0b; font-size: .9rem; }
+  .float-badge .fb-label { font-weight: 700; color: var(--dark); font-size: .8rem; }
+  .float-badge .fb-sub { color: var(--gray); font-size: .72rem; }
+
+  /* ─── SECTION BASE ─── */
+  section { padding: 90px 40px; }
+  .section-inner { max-width: 1100px; margin: 0 auto; }
+  .section-tag {
+    display: inline-flex; align-items: center; gap: 6px;
+    color: var(--blue); font-weight: 700; font-size: .82rem;
+    text-transform: uppercase; letter-spacing: 1.5px;
+    margin-bottom: 12px;
+  }
+  .section-tag::before { content: ''; width: 20px; height: 2px; background: var(--blue); }
+  h2.section-title {
+    font-family: 'Heebo', sans-serif; font-weight: 900;
+    font-size: clamp(1.8rem, 3vw, 2.6rem);
+    color: var(--dark); margin-bottom: 16px; line-height: 1.2;
+  }
+  .section-desc { font-size: 1.05rem; color: var(--gray); line-height: 1.8; max-width: 600px; }
+
+  /* ─── ABOUT ─── */
+  .about { background: var(--off-white); }
+  .about-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center;
+  }
+  .about-feature-list { margin-top: 28px; display: grid; gap: 16px; }
+  .af-item {
+    display: flex; gap: 14px; align-items: flex-start;
+    background: white; border-radius: 16px; padding: 18px 20px;
+    box-shadow: 0 2px 12px rgba(26,111,196,0.06);
+  }
+  .af-icon {
+    width: 44px; height: 44px; border-radius: 12px;
+    background: var(--blue-pale); display: flex; align-items: center;
+    justify-content: center; flex-shrink: 0; font-size: 1.3rem;
+  }
+  .af-text h4 { font-weight: 700; color: var(--dark); margin-bottom: 4px; }
+  .af-text p { font-size: .88rem; color: var(--gray); line-height: 1.6; }
+
+  .about-right {
+    background: linear-gradient(135deg, var(--blue) 0%, var(--blue-dark) 100%);
+    border-radius: 28px; padding: 48px 40px; color: white;
+  }
+  .about-right h3 {
+    font-family: 'Heebo', sans-serif; font-weight: 900;
+    font-size: 1.7rem; margin-bottom: 16px; line-height: 1.25;
+  }
+  .about-right p { font-size: 1rem; line-height: 1.8; opacity: .88; margin-bottom: 28px; }
+  .about-stats-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 16px;
+  }
+  .as-box {
+    background: rgba(255,255,255,0.12); border-radius: 16px;
+    padding: 20px; text-align: center; backdrop-filter: blur(4px);
+    border: 1px solid rgba(255,255,255,0.15);
+  }
+  .as-box-num { font-weight: 900; font-size: 2rem; display: block; }
+  .as-box-label { font-size: .8rem; opacity: .8; }
+
+  /* ─── SERVICES ─── */
+  .services-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 48px;
+  }
+  .service-card {
+    background: white; border-radius: 20px; padding: 32px 28px;
+    border: 1.5px solid var(--gray-light);
+    transition: all .3s; cursor: default; position: relative; overflow: hidden;
+  }
+  .service-card::before {
+    content: ''; position: absolute; top: 0; right: 0;
+    width: 100%; height: 4px;
+    background: linear-gradient(90deg, var(--blue-light), var(--accent));
+    transform: scaleX(0); transform-origin: right;
+    transition: transform .3s;
+  }
+  .service-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-lg); border-color: transparent; }
+  .service-card:hover::before { transform: scaleX(1); }
+  .service-icon {
+    font-size: 2.4rem; margin-bottom: 16px; display: block;
+    filter: drop-shadow(0 2px 4px rgba(0,0,0,.08));
+  }
+  .service-card h3 {
+    font-weight: 800; font-size: 1.1rem; color: var(--dark); margin-bottom: 10px;
+  }
+  .service-card p { font-size: .9rem; color: var(--gray); line-height: 1.7; }
+  .service-tag {
+    display: inline-block; margin-top: 14px;
+    background: var(--blue-pale); color: var(--blue);
+    padding: 4px 12px; border-radius: 20px; font-size: .78rem; font-weight: 700;
+  }
+
+  /* ─── BENEFITS ─── */
+  .benefits { background: var(--dark); }
+  .benefits .section-tag { color: var(--accent); }
+  .benefits .section-tag::before { background: var(--accent); }
+  .benefits h2.section-title { color: white; }
+  .benefits .section-desc { color: rgba(255,255,255,.6); }
+  .benefits-grid {
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; margin-top: 52px;
+  }
+  .benefit-card {
+    background: rgba(255,255,255,0.05); border-radius: 20px; padding: 32px 24px;
+    border: 1px solid rgba(255,255,255,0.08); text-align: center;
+    transition: all .3s;
+  }
+  .benefit-card:hover { background: rgba(45,141,224,0.15); border-color: rgba(45,141,224,0.3); transform: translateY(-4px); }
+  .benefit-card-icon { font-size: 2.2rem; margin-bottom: 16px; }
+  .benefit-card h3 { color: white; font-weight: 800; font-size: 1rem; margin-bottom: 10px; }
+  .benefit-card p { color: rgba(255,255,255,.55); font-size: .87rem; line-height: 1.7; }
+
+  /* ─── PROCESS ─── */
+  .process { background: var(--blue-pale); }
+  .process-steps {
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; margin-top: 52px;
+    position: relative;
+  }
+  .process-steps::before {
+    content: '';
+    position: absolute; top: 44px; right: 12%; left: 12%;
+    height: 2px; background: linear-gradient(90deg, var(--blue), var(--accent));
+    z-index: 0;
+  }
+  .process-step { text-align: center; padding: 0 16px; position: relative; z-index: 1; }
+  .step-num {
+    width: 56px; height: 56px; border-radius: 50%;
+    background: var(--blue); color: white;
+    font-family: 'Heebo', sans-serif; font-weight: 900; font-size: 1.3rem;
+    display: flex; align-items: center; justify-content: center;
+    margin: 0 auto 20px; border: 4px solid white;
+    box-shadow: 0 4px 16px rgba(26,111,196,0.3);
+  }
+  .process-step:last-child .step-num { background: var(--accent); }
+  .process-step h3 { font-weight: 800; font-size: 1rem; color: var(--dark); margin-bottom: 8px; }
+  .process-step p { font-size: .87rem; color: var(--gray); line-height: 1.65; }
+
+  /* ─── TESTIMONIALS ─── */
+  .testimonials-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 48px;
+  }
+  .testi-card {
+    background: white; border-radius: 20px; padding: 30px;
+    box-shadow: 0 4px 20px rgba(26,111,196,0.08);
+    border: 1.5px solid var(--gray-light);
+    transition: all .3s;
+  }
+  .testi-card:hover { transform: translateY(-4px); box-shadow: var(--shadow); border-color: var(--blue-pale); }
+  .testi-stars { color: #f59e0b; font-size: 1rem; margin-bottom: 14px; }
+  .testi-text {
+    font-size: .95rem; color: var(--text); line-height: 1.8;
+    font-style: italic; margin-bottom: 20px;
+  }
+  .testi-author { display: flex; align-items: center; gap: 12px; }
+  .testi-avatar {
+    width: 44px; height: 44px; border-radius: 50%;
+    background: linear-gradient(135deg, var(--blue-light), var(--accent));
+    display: flex; align-items: center; justify-content: center;
+    color: white; font-weight: 900; font-size: 1rem; flex-shrink: 0;
+  }
+  .testi-name { font-weight: 700; color: var(--dark); font-size: .9rem; }
+  .testi-role { font-size: .78rem; color: var(--gray); }
+
+  /* ─── FAQ ─── */
+  .faq { background: var(--off-white); }
+  .faq-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 48px;
+  }
+  .faq-item {
+    background: white; border-radius: 16px; padding: 24px 28px;
+    border: 1.5px solid var(--gray-light); cursor: pointer;
+    transition: all .25s;
+  }
+  .faq-item:hover { border-color: var(--blue); box-shadow: 0 4px 20px rgba(26,111,196,0.08); }
+  .faq-q {
+    font-weight: 700; color: var(--dark); font-size: .98rem;
+    display: flex; justify-content: space-between; align-items: center; gap: 12px;
+    margin-bottom: 12px;
+  }
+  .faq-q::after {
+    content: '＋'; color: var(--blue); font-size: 1.2rem;
+    flex-shrink: 0; font-weight: 300;
+  }
+  .faq-a { font-size: .9rem; color: var(--gray); line-height: 1.75; }
+
+  /* ─── CTA BAND ─── */
+  .cta-band {
+    background: linear-gradient(135deg, var(--blue) 0%, var(--blue-dark) 100%);
+    padding: 80px 40px; text-align: center; position: relative; overflow: hidden;
+  }
+  .cta-band::before {
+    content: ''; position: absolute; inset: 0;
+    background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.04'%3E%3Ccircle cx='30' cy='30' r='20'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  }
+  .cta-band-inner { position: relative; z-index: 1; max-width: 700px; margin: 0 auto; }
+  .cta-band h2 {
+    font-family: 'Heebo', sans-serif; font-weight: 900;
+    font-size: clamp(1.8rem, 3vw, 2.8rem);
+    color: white; margin-bottom: 14px; line-height: 1.2;
+  }
+  .cta-band p { color: rgba(255,255,255,.8); font-size: 1.05rem; margin-bottom: 36px; line-height: 1.75; }
+  .cta-band-btns { display: flex; justify-content: center; gap: 14px; flex-wrap: wrap; }
+  .btn-white {
+    background: white; color: var(--blue);
+    padding: 16px 32px; border-radius: 50px;
+    font-size: 1rem; font-weight: 800; text-decoration: none;
+    display: inline-flex; align-items: center; gap: 8px;
+    transition: all .25s; box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+  }
+  .btn-white:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(0,0,0,0.2); }
+  .btn-wa-dark {
+    background: rgba(255,255,255,0.1); color: white;
+    padding: 16px 28px; border-radius: 50px;
+    font-size: 1rem; font-weight: 700; text-decoration: none;
+    display: inline-flex; align-items: center; gap: 8px;
+    transition: all .25s; border: 1.5px solid rgba(255,255,255,0.3);
+  }
+  .btn-wa-dark:hover { background: rgba(255,255,255,0.18); }
+
+  /* ─── FOOTER ─── */
+  .footer {
+    background: var(--dark); color: rgba(255,255,255,.6);
+    padding: 40px; text-align: center; font-size: .9rem;
+  }
+  .footer strong { color: white; }
+  .footer-links { display: flex; justify-content: center; gap: 24px; margin-top: 14px; }
+  .footer-links a { color: rgba(255,255,255,.5); text-decoration: none; font-size: .82rem; }
+  .footer-links a:hover { color: white; }
+
+  /* ─── PHONE FLOAT ─── */
+  .phone-float {
+    position: fixed; bottom: 28px; left: 28px; z-index: 200;
+    background: #25d366; color: white;
+    width: 58px; height: 58px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    box-shadow: 0 6px 24px rgba(37,211,102,0.4);
+    font-size: 1.5rem; text-decoration: none;
+    animation: pulse 2.5s infinite;
+  }
+  @keyframes pulse {
+    0%,100% { box-shadow: 0 6px 24px rgba(37,211,102,0.4); }
+    50% { box-shadow: 0 6px 40px rgba(37,211,102,0.65); }
+  }
+
+  /* ─── RESPONSIVE ─── */
+  @media (max-width: 900px) {
+    section { padding: 60px 24px; }
+    .nav { padding: 12px 24px; }
+    .hero { padding: 100px 24px 60px; }
+    .hero-inner { grid-template-columns: 1fr; gap: 40px; }
+    .hero-visual { display: none; }
+    .about-grid { grid-template-columns: 1fr; }
+    .services-grid { grid-template-columns: 1fr 1fr; }
+    .benefits-grid { grid-template-columns: 1fr 1fr; }
+    .process-steps { grid-template-columns: 1fr 1fr; gap: 32px; }
+    .process-steps::before { display: none; }
+    .testimonials-grid { grid-template-columns: 1fr; }
+    .faq-grid { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 560px) {
+    .services-grid { grid-template-columns: 1fr; }
+    .benefits-grid { grid-template-columns: 1fr; }
+    .process-steps { grid-template-columns: 1fr; }
+    .hero-stats { gap: 16px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="nav-logo">
+    <svg viewBox="0 0 40 40" fill="none">
+      <circle cx="20" cy="20" r="19" fill="#e8f4fd" stroke="#1a6fc4" stroke-width="1.5"/>
+      <path d="M20 8 C14 8 10 13 11 18 C12 23 16 26 20 32 C24 26 28 23 29 18 C30 13 26 8 20 8Z" fill="#1a6fc4" opacity=".2"/>
+      <path d="M16 19 L19 22 L24 16" stroke="#1a6fc4" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+      <circle cx="28" cy="12" r="3" fill="#00c9a7"/>
+    </svg>
+    נקי ונעים
+  </div>
+  <a href="tel:0504216944" class="nav-cta">📞 050-4216944</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-content">
+      <div class="hero-badge">שירות מקצועי ואמין ברחבי הארץ</div>
+      <h1>
+        הבית שלכם
+        <span>ראוי לניקיון מושלם</span>
+      </h1>
+      <p class="hero-sub">
+        שירותי ניקיון מקצועיים לבתים, משרדים ואחרי שיפוצים – עם צוות אמין, ציוד מתקדם
+        ותוצאות שמדברות בעד עצמן. כי אתם מגיע לחזור הביתה למרחב נקי ורגוע.
+      </p>
+      <div class="hero-ctas">
+        <a href="tel:0504216944" class="btn-primary">
+          📞 התקשרו עכשיו
+        </a>
+        <a href="https://wa.me/972504216944?text=שלום, אני מעוניין/ת לקבל הצעת מחיר לניקיון" class="btn-whatsapp" target="_blank">
+          💬 וואטסאפ
+        </a>
+      </div>
+      <div class="hero-stats">
+        <div class="hero-stat">
+          <div class="hero-stat-num">500+</div>
+          <div class="hero-stat-label">לקוחות מרוצים</div>
+        </div>
+        <div class="hero-stat">
+          <div class="hero-stat-num">8+</div>
+          <div class="hero-stat-label">שנות ניסיון</div>
+        </div>
+        <div class="hero-stat">
+          <div class="hero-stat-num">100%</div>
+          <div class="hero-stat-label">שביעות רצון</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero-visual">
+      <div style="position:relative;">
+        <div class="hero-card-main">
+          <div class="hero-icon-big">
+            <svg viewBox="0 0 44 44" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+              <circle cx="22" cy="22" r="18"/>
+              <path d="M14 22 L19 27 L30 16"/>
+            </svg>
+          </div>
+          <h3>מה כלול בכל ניקיון?</h3>
+          <ul class="check-list">
+            <li>שטיפת ריצפות וחלונות</li>
+            <li>ניקוי חדרי שירותים ומקלחות</li>
+            <li>ניקוי מטבח מלא</li>
+            <li>איסוף אבק וניגוב משטחים</li>
+            <li>ריחות נעימים ואוויר טרי</li>
+          </ul>
+        </div>
+        <div class="float-badge float-badge-1">
+          <span class="stars">★★★★★</span>
+          <div>
+            <div class="fb-label">ציון ממוצע</div>
+            <div class="fb-sub">5/5 על פי לקוחות</div>
+          </div>
+        </div>
+        <div class="float-badge float-badge-2">
+          <span style="font-size:1.4rem">🏠</span>
+          <div>
+            <div class="fb-label">זמינות מהירה</div>
+            <div class="fb-sub">תיאום תוך 24 שעות</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about">
+  <div class="section-inner">
+    <div class="about-grid">
+      <div>
+        <div class="section-tag">מי אנחנו</div>
+        <h2 class="section-title">ניקיון שמרגיש בבית</h2>
+        <p class="section-desc">
+          נקי ונעים היא חברת ניקיון מקצועית בראשות רן – מנהל שמאמין שניקיון אמיתי
+          הוא לא רק ניקיון עיניים, אלא חוויה שלמה. אנחנו מגיעים עם לב, עם ידיים עובדות
+          ועם הבטחה אחת: הבית שלכם יזהר.
+        </p>
+        <div class="about-feature-list">
+          <div class="af-item">
+            <div class="af-icon">🧹</div>
+            <div class="af-text">
+              <h4>ציוד מקצועי מתקדם</h4>
+              <p>מכשירי ניקיון תעשייתיים ותכשירים ידידותיים לסביבה ובטוחים לילדים וחיות מחמד.</p>
+            </div>
+          </div>
+          <div class="af-item">
+            <div class="af-icon">👷</div>
+            <div class="af-text">
+              <h4>צוות אמין ומנוסה</h4>
+              <p>כל העובדים עברו הכשרה מקצועית ובדיקות רקע. אנחנו שולחים רק אנשים שנסמוך עליהם גם בבית שלנו.</p>
+            </div>
+          </div>
+          <div class="af-item">
+            <div class="af-icon">📅</div>
+            <div class="af-text">
+              <h4>גמישות ושירות מהיר</h4>
+              <p>זמינים ימים א'–ו', כולל שירותי חירום ובהתראה קצרה. תיאום פשוט בוואטסאפ.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="about-right">
+        <h3>מנקים באהבה – כי הבית שלכם הוא הבית שלנו</h3>
+        <p>
+          מאז 2016 אנחנו מלווים מאות משפחות ועסקים בדרך לחיים נקיים, מסודרים ורגועים יותר.
+          הגישה שלנו היא פשוטה: לטפל בכל פינה כאילו היה זה הבית שלנו עצמנו.
+          כי בסוף, ניקיון טוב הוא מתנה שאתם נותנים לעצמכם.
+        </p>
+        <div class="about-stats-grid">
+          <div class="as-box">
+            <span class="as-box-num">500+</span>
+            <span class="as-box-label">לקוחות מרוצים</span>
+          </div>
+          <div class="as-box">
+            <span class="as-box-num">8+</span>
+            <span class="as-box-label">שנות ניסיון</span>
+          </div>
+          <div class="as-box">
+            <span class="as-box-num">98%</span>
+            <span class="as-box-label">חוזרים שוב</span>
+          </div>
+          <div class="as-box">
+            <span class="as-box-num">24/7</span>
+            <span class="as-box-label">זמינות בוואטסאפ</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="services" style="background:white;">
+  <div class="section-inner">
+    <div class="section-tag">השירותים שלנו</div>
+    <h2 class="section-title">כל מה שצריך – במקום אחד</h2>
+    <p class="section-desc">פתרונות ניקיון מקיפים לכל סוג של נכס ולכל צורך, עם אפשרות לשירות חד-פעמי או קבוע.</p>
+
+    <div class="services-grid">
+      <div class="service-card">
+        <span class="service-icon">🏠</span>
+        <h3>ניקיון דירות ובתים</h3>
+        <p>ניקיון שבועי, דו-שבועי או חד-פעמי. מסלון ועד חדרי שינה – כל חדר מטופל בקפידה ועם תשומת לב לפרטים.</p>
+        <span class="service-tag">הכי מבוקש</span>
+      </div>
+      <div class="service-card">
+        <span class="service-icon">🏢</span>
+        <h3>ניקיון משרדים</h3>
+        <p>שמרו על סביבת עבודה מקצועית ומרעננת. ניקיון לפני ואחרי שעות העבודה – בלי להפריע לפעילות השוטפת.</p>
+        <span class="service-tag">לעסקים</span>
+      </div>
+      <div class="service-card">
+        <span class="service-icon">✨</span>
+        <h3>ניקיון עומק</h3>
+        <p>ניקיון יסודי שמגיע לכל פינה שנשכחת. רהיטים, תחתיות מכשירים, חריצים ומפגשי קירות – הכל.</p>
+        <span class="service-tag">מומלץ פעמיים בשנה</span>
+      </div>
+      <div class="service-card">
+        <span class="service-icon">🔨</span>
+        <h3>ניקיון אחרי שיפוץ</h3>
+        <p>הוצאת אבק בנייה, שאריות סיד, ניקוי ריצפות וחלונות לאחר עבודות. מוכנים גם לעבודה כבדה.</p>
+        <span class="service-tag">מתמחים</span>
+      </div>
+      <div class="service-card">
+        <span class="service-icon">🧼</span>
+        <h3>ניקיון לפני/אחרי אירועים</h3>
+        <p>הכינו את הבית לאירוח או נקו אחריו. מוכנים גם לפינות צרות וגם לנפחים גדולים.</p>
+        <span class="service-tag">בהתראה קצרה</span>
+      </div>
+      <div class="service-card">
+        <span class="service-icon">📦</span>
+        <h3>ניקיון לפני/אחרי מעבר דירה</h3>
+        <p>עוזבים או מגיעים לנכס חדש? נדאג שהדירה תהיה נקייה לגמרי – לכם ולדיירים הבאים.</p>
+        <span class="service-tag">ייחודי</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BENEFITS -->
+<section class="benefits">
+  <div class="section-inner">
+    <div class="section-tag">למה אנחנו</div>
+    <h2 class="section-title">היתרון שלנו הוא פשוט: אנחנו אכפתיים</h2>
+    <p class="section-desc">לא רק מנקים – אנחנו יוצרים תחושת בית אמיתית עם כל ביקור.</p>
+
+    <div class="benefits-grid">
+      <div class="benefit-card">
+        <div class="benefit-card-icon">⏰</div>
+        <h3>מגיעים בזמן, תמיד</h3>
+        <p>מכבדים את לוח הזמנים שלכם. תיאום מדויק ועמידה בהבטחות – בלי הפתעות.</p>
+      </div>
+      <div class="benefit-card">
+        <div class="benefit-card-icon">💰</div>
+        <h3>מחיר הוגן ושקוף</h3>
+        <p>הצעת מחיר ברורה מראש, בלי תוספות מפתיעות. תדעו בדיוק מה אתם משלמים.</p>
+      </div>
+      <div class="benefit-card">
+        <div class="benefit-card-icon">🌿</div>
+        <h3>חומרים בטוחים ואיכותיים</h3>
+        <p>תכשירים ידידותיים לסביבה, בטוחים לילדים, לקשישים ולחיות מחמד.</p>
+      </div>
+      <div class="benefit-card">
+        <div class="benefit-card-icon">🔒</div>
+        <h3>ביטחון ואמינות מלאים</h3>
+        <p>כל הצוות מאומת ומבוטח. אתם יכולים לתת לנו את המפתח בראש שקט.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section class="process">
+  <div class="section-inner">
+    <div class="section-tag" style="color:var(--blue)">איך זה עובד</div>
+    <h2 class="section-title">4 צעדים לבית נקי ורגוע</h2>
+    <p class="section-desc">תהליך פשוט, שקוף ונוח – כי הזמן שלכם יקר.</p>
+
+    <div class="process-steps">
+      <div class="process-step">
+        <div class="step-num">1</div>
+        <h3>יצרתם קשר</h3>
+        <p>התקשרתם או שלחתם הודעה בוואטסאפ – ואנחנו עונים מהר.</p>
+      </div>
+      <div class="process-step">
+        <div class="step-num">2</div>
+        <h3>תיאום והצעת מחיר</h3>
+        <p>שואלים כמה שאלות קצרות ומשלחים הצעת מחיר ברורה ומשתלמת.</p>
+      </div>
+      <div class="process-step">
+        <div class="step-num">3</div>
+        <h3>הצוות מגיע</h3>
+        <p>מגיעים בזמן, עם ציוד מלא ובמקצועיות. אפשר להיות בבית או לא.</p>
+      </div>
+      <div class="process-step">
+        <div class="step-num">4</div>
+        <h3>אתם נהנים 🎉</h3>
+        <p>הבית זוהר, הריח נעים, ואתם נושמים לרווחה. כך ניקיון אמור להרגיש.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA MID -->
+<div class="cta-band">
+  <div class="cta-band-inner">
+    <h2>מוכנים לבית שיזהר?</h2>
+    <p>קבלו הצעת מחיר עכשיו – בלי התחייבות, בלי הפתעות. רק ניקיון שאתם יכולים לסמוך עליו.</p>
+    <div class="cta-band-btns">
+      <a href="tel:0504216944" class="btn-white">📞 050-4216944</a>
+      <a href="https://wa.me/972504216944?text=שלום רן, אני מעוניין/ת בהצעת מחיר לניקיון" class="btn-wa-dark" target="_blank">💬 שלחו הודעה בוואטסאפ</a>
+    </div>
+  </div>
+</div>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials" style="background:white;">
+  <div class="section-inner">
+    <div class="section-tag">מה אומרים עלינו</div>
+    <h2 class="section-title">500 לקוחות מרוצים לא יכולים לטעות</h2>
+    <p class="section-desc">אנחנו גאים בכל ביקורת ובכל לקוח שחוזר שוב ושוב.</p>
+
+    <div class="testimonials-grid">
+      <div class="testi-card">
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-text">"רן ממש הפתיע אותי. הוא הגיע בדיוק בשעה שסיכמנו, עם כל הציוד, ועשה עבודה מדהימה. הדירה נראית כמו חדשה. ממליצה בחום לכולם!"</p>
+        <div class="testi-author">
+          <div class="testi-avatar">מ</div>
+          <div>
+            <div class="testi-name">מיכל כהן</div>
+            <div class="testi-role">בעלת דירה, רמת גן</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="testi-card">
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-text">"אנחנו משתמשים בשירות של נקי ונעים כבר שנתיים. המשרד שלנו תמיד מסודר ונקי. הצוות מקצועי, נחמד ומאוד אמין. ממליץ בחום לכל בעל עסק."</p>
+        <div class="testi-author">
+          <div class="testi-avatar">א</div>
+          <div>
+            <div class="testi-name">אלון שפירא</div>
+            <div class="testi-role">מנהל משרד, תל אביב</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="testi-card">
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-text">"הזמנתי ניקיון עומק אחרי שיפוץ. לא האמנתי שאפשר להוציא את כל אבק הבנייה הזה. בית חדש לגמרי! שירות מהיר, מחיר הוגן ותוצאה מושלמת."</p>
+        <div class="testi-author">
+          <div class="testi-avatar">ד</div>
+          <div>
+            <div class="testi-name">דנה לוי</div>
+            <div class="testi-role">בעלת בית, כפר סבא</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="testi-card">
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-text">"ניקיון לפני פסח – עבודה שרק רן יודע לעשות. פינות שלא ידעתי שקיימות פתאום נקיות. הכל מבריק. השנה שוב אני מזמינה אותו ללא היסוס."</p>
+        <div class="testi-author">
+          <div class="testi-avatar">ר</div>
+          <div>
+            <div class="testi-name">רחל ברקוביץ'</div>
+            <div class="testi-role">אמא ועקרת בית, הרצליה</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="testi-card">
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-text">"הזמנתי ניקיון לפני כניסה לדירה חדשה. הדירה הגיעה ממש במצב לא טוב. הם עשו ניסים. עכשיו אפשר לנשום. שירות אמין ומחיר שווה כל שקל."</p>
+        <div class="testi-author">
+          <div class="testi-avatar">י</div>
+          <div>
+            <div class="testi-name">יוסי אברהם</div>
+            <div class="testi-role">שוכר, פתח תקווה</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="testi-card">
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-text">"מנהלת קליניקה קטנה, ונקיון הוא חלק מהברנד שלי. נקי ונעים עונים בדיוק על הצרכים שלי. מדויקים, מקצועיים ולא מפריעים לעבודה. תודה רן!"</p>
+        <div class="testi-author">
+          <div class="testi-avatar">נ</div>
+          <div>
+            <div class="testi-name">נטלי גרוס</div>
+            <div class="testi-role">מנהלת קליניקה, רחובות</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq">
+  <div class="section-inner">
+    <div class="section-tag">שאלות נפוצות</div>
+    <h2 class="section-title">יש לכם שאלות? יש לנו תשובות</h2>
+    <p class="section-desc">כל מה שרציתם לדעת לפני שמזמינים – בגובה העיניים.</p>
+
+    <div class="faq-grid">
+      <div class="faq-item">
+        <div class="faq-q">כמה עולה ניקיון דירה?</div>
+        <div class="faq-a">המחיר תלוי בגודל הדירה, סוג הניקיון ותדירות השירות. אנחנו נותנים הצעת מחיר אישית ושקופה לאחר שיחה קצרה. אין הפתעות.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">האם אני צריך/ה להיות בבית בזמן הניקיון?</div>
+        <div class="faq-a">לא חייבים. ניתן להשאיר מפתח ולסמוך על הצוות שלנו. כל העובדים עברו בדיקות ואנחנו עובדים עם אמינות מלאה.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">האם אתם מביאים את הציוד?</div>
+        <div class="faq-a">כן! אנחנו מגיעים עם כל הציוד הנדרש – שואבי אבק, מוצרי ניקיון מקצועיים, ספוגים, מגבים ועוד. אתם לא צריכים להכין כלום.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">מה ההבדל בין ניקיון רגיל לניקיון עומק?</div>
+        <div class="faq-a">ניקיון רגיל מכסה את כל המשטחים הנגישים – ריצפות, שולחנות, חדרי שירות. ניקיון עומק מגיע גם לארונות, מאחורי מכשירים, חריצים וכל פינה שנשכחת.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">באילו אזורים אתם פעילים?</div>
+        <div class="faq-a">אנחנו פעילים במרכז הארץ ובסביבתו – כולל גוש דן, שרון, ושפלה. התקשרו ואנחנו נאשר זמינות לאזור שלכם.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">האם אפשר לקבוע שירות קבוע שבועי?</div>
+        <div class="faq-a">בהחלט! לקוחות קבועים מקבלים עדיפות בתיאומים ולעיתים גם הטבות מחיר. שירות קבוע מבטיח שהבית שלכם תמיד מוכן.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">האם החומרים בטוחים לילדים וחיות מחמד?</div>
+        <div class="faq-a">כן לחלוטין. אנחנו משתמשים בתכשירים ידידותיים לסביבה, בלי כלורין חזק וחומרים אגרסיביים. הבית שלכם בטוח לכולם.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">מה קורה אם לא הייתי מרוצה מהשירות?</div>
+        <div class="faq-a">שביעות רצון הלקוח היא המדיניות שלנו. אם משהו לא עלה על הציפיות – נחזור ונתקן בלי עלות נוספת. זו ההתחייבות שלנו.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<div class="cta-band">
+  <div class="cta-band-inner">
+    <h2>תנו לנו לנקות. תנו לעצמכם לנשום.</h2>
+    <p>
+      הבית הנקי שתמיד חלמתם עליו הוא מרחק שיחה אחת. רן וצוות נקי ונעים כאן בשבילכם.
+    </p>
+    <div class="cta-band-btns">
+      <a href="tel:0504216944" class="btn-white">📞 התקשרו עכשיו – 050-4216944</a>
+      <a href="https://wa.me/972504216944?text=שלום! אני מעוניין/ת לקבל הצעת מחיר" class="btn-wa-dark" target="_blank">💬 קבלו הצעת מחיר בוואטסאפ</a>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div><strong>נקי ונעים</strong> – ניקיון מקצועי לבית ולמשרד</div>
+  <div style="margin-top:8px;">📞 <strong>050-4216944</strong> | רן</div>
+  <div class="footer-links">
+    <a href="tel:0504216944">התקשרו</a>
+    <a href="https://wa.me/972504216944" target="_blank">וואטסאפ</a>
+  </div>
+  <div style="margin-top:16px; font-size:.78rem; opacity:.4;">© 2024 נקי ונעים. כל הזכויות שמורות.</div>
+</footer>
+
+<!-- FLOATING WA BUTTON -->
+<a href="https://wa.me/972504216944?text=שלום! אני מעוניין/ת לקבל הצעת מחיר" class="phone-float" target="_blank" title="שלחו הודעה בוואטסאפ">
+  💬
+</a>
+
+</body>
+</html>
